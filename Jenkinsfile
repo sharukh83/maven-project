@@ -27,13 +27,13 @@ stages{
         parallel{
             stage ('Deploy to staging'){
                 steps {
-                    sh "scp -i /var/lib/jenkins/amerkey.pem **/target/*.war ubuntu@${params.tomcat_dev}:/var/lib/tomcat9/webapps"
+                    sh "scp -i /home/ubuntu/amerkey.pem **/target/*.war ubuntu@${params.tomcat_dev}:/var/lib/tomcat9/webapps"
                 }
             }
 
             stage ("Deploy to production"){
                 steps {
-                     sh "scp -i /var/lib/jenkins/amerkey.pem **/target/*.war ubuntu@${params.tomcat_prod}:/var/lib/tomcat9/webapps"
+                     sh "scp -i /home/ubuntu/amerkey.pem **/target/*.war ubuntu@${params.tomcat_prod}:/var/lib/tomcat9/webapps"
                 }
             }
         }
